@@ -19,6 +19,7 @@ Functions
    :toctree: generated/
 
    hommola_cospeciation
+   hommola_cospeciation_host
 
 """
 
@@ -35,6 +36,7 @@ from __future__ import absolute_import, division, print_function
 from skbio.util import TestRunner
 
 from ._hommola import hommola_cospeciation
+from ._hommola import hommola_cospeciation_host
 
 __all__ = ['hommola_cospeciation']
 
