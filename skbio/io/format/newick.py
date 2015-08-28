@@ -335,7 +335,7 @@ def _newick_to_tree_node(fh, convert_underscores=True):
 
 
 @newick.writer(TreeNode)
-def _tree_node_to_newick(obj, fh):
+def _tree_node_to_newick(obj, fh, escape_names = False):
     operators = set(",:_;()[]")
     current_depth = 0
     nodes_left = [(obj, 0)]
@@ -358,7 +358,7 @@ def _tree_node_to_newick(obj, fh):
             # are considered to be the absence of a label.
             if node.name:
                 escaped = "%s" % node.name.replace("'", "''")
-                if any(t in operators for t in node.name):
+                if any(t in operators for t in node.name) or escape_names:
                     fh.write("'")
                     fh.write(escaped)
                     fh.write("'")
